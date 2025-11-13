@@ -1,0 +1,42 @@
+pipeline{
+
+  agent any
+
+
+  stages{
+  
+    stage('GitConnection'){
+      steps{
+        git branch:'main',url:'https://github.com/br-chandan/Devops-Lab-7'
+      }
+    }
+
+     stage('Compiling'){
+      steps{
+        echo 'Compiling the Java File'
+        sh 'javac Hello.java'
+      }
+    }
+
+    stage('Execution'){
+      steps{
+        echo 'Executing the Java File and Python File'
+        sh 'java Hello'
+        sh 'python3 Hello.py'
+      }
+    }
+  }
+
+    post{
+      success{
+        echo 'Program Executed without Error'
+      }
+       failure{
+        echo 'Program Exited with Error'
+      }
+    }
+}
+
+
+    
+  
