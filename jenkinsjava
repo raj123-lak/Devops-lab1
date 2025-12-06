@@ -33,6 +33,7 @@ pipeline{
       }
        failure{
         echo 'Program Exited with Error'
+        echo 'Changes'
       }
     }
 }
